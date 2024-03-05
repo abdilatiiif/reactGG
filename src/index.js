@@ -79,18 +79,19 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
-  if (props.pizzaObj.soldOut) return null;
+function Pizza({ pizzaObj }) {
+  console.log(pizzaObj);
+  if (pizzaObj.soldOut) return null;
 
   return (
     <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.photoName} />
+      <img src={pizzaObj.photoName} alt={pizzaObj.photoName} />
       <div>
         <h3 style={{ color: "orange" }} className="pizza">
-          {props.pizzaObj.name}
+          {pizzaObj.name}
         </h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span> $ {props.pizzaObj.price}</span>
+        <p>{pizzaObj.ingredients}</p>
+        <span> $ {pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -105,13 +106,13 @@ function Footer() {
   const isOpen = hour >= openHour && hour <= closeHour;
   console.log(isOpen);
 
-  if (!isOpen) return <p> return 1: We`er closed, come back {openHour}:00</p>;
+  //if (!isOpen) return <p> return 1: We`er closed, come back {openHour}:00</p>;
 
   return (
     <div className="order">
       <footer className="footer">
         {isOpen ? (
-          <p> We`er open til until {closeHour}:00</p>
+          <Order closeHour={closeHour} />
         ) : (
           <p> return 2: We`er closed, come back {openHour}:00</p>
         )}
@@ -122,6 +123,13 @@ function Footer() {
   );
 }
 
+function Order({ closeHour }) {
+  return (
+    <div className="order">
+      <p> We`er open til until {closeHour}:00</p>
+    </div>
+  );
+}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
