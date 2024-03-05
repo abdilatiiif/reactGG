@@ -80,7 +80,6 @@ function Menu() {
 }
 
 function Pizza(props) {
-  // pizza soldout
   if (props.pizzaObj.soldOut) return null;
 
   return (
